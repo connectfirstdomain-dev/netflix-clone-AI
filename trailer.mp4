@@ -1,0 +1,3 @@
+<video controls width="320">
+  <source src="./videos/trailer.mp4" type="video/mp4">
+</video>

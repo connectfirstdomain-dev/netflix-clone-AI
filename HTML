@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Netflix Clone | Watch Movies Online</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="#" class="brand">NETFLIX</a>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#series">TV Shows</a>
+        </nav>
+
+        <div class="account-area">
+
+            <span id="welcomeUser" hidden></span>
+
+            <button id="signInButton" onclick="signIn()">
+                Sign In
+            </button>
+
+            <button id="signOutButton" onclick="signOut()" hidden>
+                Sign Out
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="banner">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">NETFLIX ORIGINAL</span>
+
+            <h1>
+                Stories that stay
+                <strong>with you.</strong>
+            </h1>
+
+            <p>
+                Unlimited movies, TV shows, and more.
+                Watch anywhere. Discover your next favourite story.
+            </p>
+
+            <div class="hero-actions">
+
+                <button class="primary-button" onclick="getStarted()">
+                    Explore Movies
+                </button>
+
+                <a href="#movies" class="secondary-button">
+                    Browse Titles
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VIDEO PLAYER -->
+
+    <section class="video-player-section" id="playerSection" hidden>
+
+        <div class="video-container">
+
+            <div class="video-heading">
+
+                <div>
+                    <span class="eyebrow">NOW PLAYING</span>
+
+                    <h2 id="playerTitle">Select a Movie</h2>
+                </div>
+
+                <button class="close-player" onclick="closeMovie()">
+                    Close Player
+                </button>
+
+            </div>
+
+            <video
+                id="moviePlayer"
+                controls
+                playsinline
+                preload="metadata">
+
+                Your browser does not support video playback.
+
+            </video>
+
+            <p id="videoError" class="video-error" hidden>
+                Unable to play this video.
+                Please check your video file.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MOVIES SECTION -->
+
+    <main>
+
+        <section class="catalog" id="movies">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">YOUR NEXT WATCH</span>
+
+                    <h2>Popular on Netflix</h2>
+
+                </div>
+
+                <div class="search">
+
+                    <input
+                        type="search"
+                        id="searchBox"
+                        placeholder="Search movies..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTER BUTTONS -->
+
+            <div class="filters">
+
+                <button class="filter active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter" data-filter="action">
+                    Action
+                </button>
+
+                <button class="filter" data-filter="comedy">
+                    Comedy
+                </button>
+
+                <button class="filter" data-filter="drama">
+                    Drama
+                </button>
+
+            </div>
+
+            <p class="tmdb-status" id="tmdbStatus" role="status" aria-live="polite">
+                Loading movies from TMDB...
+            </p>
+
+            <!-- MOVIE CARDS -->
+
+            <div class="movie-container" id="movieContainer">
+
+
+                <!-- MOVIE 1 -->
+
+                <article class="movie" data-title="AI Dreamscape" data-genre="action">
+
+                    <img
+                        src="https://placehold.co/600x850/21154f/ffffff?text=AI+Dreamscape"
+                        alt="AI Dreamscape">
+
+                    <div class="movie-info">
+
+                        <span>2026 | AI Original</span>
+
+                        <h3>AI Dreamscape</h3>
+
+                        <p>A journey into the future of artificial intelligence.</p>
+
+                        <button onclick="playMovie('videos/movie1.mp4','AI Dreamscape')">
+                            Play Movie
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MOVIE 2 -->
+
+                <article class="movie" data-title="The Last Horizon" data-genre="action">
+
+                    <img
+                        src="https://placehold.co/600x850/17243b/ffffff?text=The+Last+Horizon"
+                        alt="The Last Horizon">
+
+                    <div class="movie-info">
+
+                        <span>2026 | Action</span>
+
+                        <h3>The Last Horizon</h3>
+
+                        <p>An exciting adventure beyond the horizon.</p>
+
+                        <button onclick="playMovie('videos/movie2.mp4','The Last Horizon')">
+                            Play Movie
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MOVIE 3 -->
+
+                <article class="movie" data-title="Midnight in Paris" data-genre="drama">
+
+                    <img
+                        src="https://placehold.co/600x850/3b2638/ffffff?text=Midnight+in+Paris"
+                        alt="Midnight in Paris">
+
+                    <div class="movie-info">
+
+                        <span>2025 | Drama</span>
+
+                        <h3>Midnight in Paris</h3>
+
+                        <p>A beautiful story filled with emotions.</p>
+
+                        <button onclick="playMovie('videos/movie3.mp4','Midnight in Paris')">
+                            Play Movie
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MOVIE 4 -->
+
+                <article class="movie" data-title="Laugh Track" data-genre="comedy">
+
+                    <img
+                        src="https://placehold.co/600x850/5b3c23/ffffff?text=Laugh+Track"
+                        alt="Laugh Track">
+
+                    <div class="movie-info">
+
+                        <span>2026 | Comedy</span>
+
+                        <h3>Laugh Track</h3>
+
+                        <p>A lighthearted story full of laughter.</p>
+
+                        <button onclick="playMovie('videos/movie4.mp4','Laugh Track')">
+                            Play Movie
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MOVIE 5 -->
+
+                <article class="movie" data-title="Code Red" data-genre="action">
+
+                    <img
+                        src="https://placehold.co/600x850/452126/ffffff?text=Code+Red"
+                        alt="Code Red">
+
+                    <div class="movie-info">
+
+                        <span>2025 | Action</span>
+
+                        <h3>Code Red</h3>
+
+                        <p>A thrilling action experience.</p>
+
+                        <button onclick="playMovie('videos/movie5.mp4','Code Red')">
+                            Play Movie
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MOVIE 6 -->
+
+                <article class="movie" data-title="Neon City" data-genre="drama">
+
+                    <img
+                        src="https://placehold.co/600x850/162d3d/ffffff?text=Neon+City"
+                        alt="Neon City">
+
+                    <div class="movie-info">
+
+                        <span>2026 | Drama</span>
+
+                        <h3>Neon City</h3>
+
+                        <p>A mysterious journey through a futuristic city.</p>
+
+                        <button onclick="playMovie('videos/movie6.mp4','Neon City')">
+                            Play Movie
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+            <p id="emptyState" class="empty-state" hidden>
+                No movies found.
+            </p>
+
+        </section>
+
+
+        <!-- SPOTLIGHT -->
+
+        <section class="spotlight" id="series">
+
+            <div>
+
+                <span class="eyebrow">ONLY ON NETFLIX</span>
+
+                <h2>Find your next obsession.</h2>
+
+                <p>
+                    Explore amazing stories, discover new movies
+                    and enjoy your entertainment experience.
+                </p>
+
+            </div>
+
+            <a href="#movies" class="secondary-button">
+                Browse Movies
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOGIN MODAL -->
+
+    <div class="modal-backdrop" id="loginModal" hidden>
+
+        <section class="login-card">
+
+            <button class="close-modal" onclick="closeLogin()">
+                ×
+            </button>
+
+            <span class="brand">NETFLIX</span>
+
+            <h2>Sign In</h2>
+
+            <p>Welcome back! Sign in to continue.</p>
+
+            <form id="loginForm">
+
+                <label>Email Address</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    minlength="4"
+                    required>
+
+                <p id="loginError" class="login-error"></p>
+
+                <button type="submit">
+                    Sign In
+                </button>
+
+            </form>
+
+            <small>
+                Demo login only. This does not provide real account authentication.
+            </small>
+
+        </section>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div id="toast" class="toast"></div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>© 2026 Netflix Clone Project</p>
+
+        <p>Developed using HTML, CSS and JavaScript.</p>
+
+    </footer>
+
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+<div class="card">
+  <h3>My Movie</h3>
+  <video controls width="250">
+    <source src="videos/trailer.mp4" type="video/mp4">
+    Your browser does not support video playback.
+  </video>
+</div>

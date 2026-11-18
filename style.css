@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    background: #080808;
+}
+
+.logo {
+    color: #e50914;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+}
+
+button {
+    background: #e50914;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #b20710;
+}
+
+.hero {
+    min-height: 480px;
+    padding: 120px 6% 60px;
+    background:
+        linear-gradient(to right, #111 15%, transparent),
+        linear-gradient(to top, #111, transparent),
+        #292929;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+main {
+    padding: 30px 5%;
+}
+
+main h2 {
+    margin-bottom: 20px;
+}
+
+.movie-section {
+    margin-bottom: 40px;
+}
+
+.movie-row {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 15px 5px 25px;
+    scroll-behavior: smooth;
+}
+
+.movie-row::-webkit-scrollbar {
+    height: 7px;
+}
+
+.movie-row::-webkit-scrollbar-thumb {
+    background: #e50914;
+    border-radius: 10px;
+}
+
+.movie-card {
+    position: relative;
+    min-width: 180px;
+    width: 180px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.movie-card:hover {
+    transform: scale(1.08);
+    z-index: 5;
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+.movie-card h3 {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.movie-card p {
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.movie-card .preview {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 125px;
+    border: none;
+    border-radius: 8px;
+    display: none;
+    pointer-events: none;
+}
+
+.movie-card:hover .preview {
+    display: block;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal-content {
+    background: #222;
+    padding: 35px;
+    width: 350px;
+    border-radius: 10px;
+}
+
+.modal-content input {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-content button:not(.close) {
+    width: 100%;
+}
+
+.close {
+    float: right;
+}
+
+.trailer-content {
+    width: 85%;
+    max-width: 900px;
+    padding: 35px;
+    border-radius: 10px;
+    background: #222;
+}
+
+.trailer-content h2 {
+    margin-bottom: 20px;
+}
+
+#trailerPlayer iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #080808;
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .movie-card {
+        min-width: 135px;
+        width: 135px;
+    }
+}
